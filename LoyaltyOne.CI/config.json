@@ -1,0 +1,10 @@
+{
+	"components": [
+		{
+			"projectPath": "LoyaltyOne\\LoyaltyOne.Web\\LoyaltyOne.Web.csproj"
+		},
+		{
+			"projectPath": "LoyaltyOne\\LoyaltyOne.WebApi\\LoyaltyOne.WebApi.csproj"
+		}
+	]
+}

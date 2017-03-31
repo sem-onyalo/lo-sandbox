@@ -6,7 +6,13 @@ param(
 )
 
 $buildCmd = "msbuild"
-$buildSourcePath = ("{0}\{1}" -f  $workspacePath, "LoyaltyOne\LoyaltyOne.Web\LoyaltyOne.Web.csproj") 
 $buildCmdProperties = ("/property:DeployOnBuild={0};PublishProfile={1};VisualStudioVersion={2}" -f $deployOnBuild, $deployProfile, $vsVersion)
 
-& $buildCmd $buildSourcePath $buildCmdProperties
+$config = (get-content -Raw "$PSScriptRoot\config.json") | ConvertFrom-Json
+
+foreach($component in $config.components)
+{
+	$buildSourcePath = ("{0}\{1}" -f  $workspacePath, $component.projectPath) 
+
+	& $buildCmd $buildSourcePath $buildCmdProperties
+}
