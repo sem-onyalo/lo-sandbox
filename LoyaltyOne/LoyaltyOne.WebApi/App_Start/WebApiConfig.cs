@@ -1,7 +1,4 @@
-﻿using LoyaltyOne.Services;
-using Microsoft.Practices.Unity;
-using System.Web.Http;
-using Unity.WebApi;
+﻿using System.Web.Http;
 
 namespace LoyaltyOne.WebApi
 {
@@ -20,16 +17,7 @@ namespace LoyaltyOne.WebApi
                 defaults: new { controller = "Default", action = "Index" }
             );
 
-            config.DependencyResolver = new UnityDependencyResolver(BuildUnityContainer());
-        }
-
-        private static IUnityContainer BuildUnityContainer()
-        {
-            UnityContainer container = new UnityContainer();
-
-            container.RegisterType<ITextService, TextService>();
-
-            return container;
+            UnityConfig.RegisterComponents();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using LoyaltyOne.WebApi.Models;
 using LoyaltyOne.Services;
-using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -32,6 +32,25 @@ namespace LoyaltyOne.WebApi.Controllers
             try
             {
                 response.Text = _textService.PingText(text);
+            }
+            catch (Exception ex)
+            {
+                response.Text = string.Empty;
+                response.Error = string.Format("Internal server error: {0}", ex.Message);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+        [Route("v1/text/{text}")]
+        [HttpPost]
+        public virtual HttpResponseMessage PostText(string text)
+        {
+            PostTextResponse response = new PostTextResponse();
+
+            try
+            {
+                response.Text = _textService.SaveText(text);
             }
             catch (Exception ex)
             {

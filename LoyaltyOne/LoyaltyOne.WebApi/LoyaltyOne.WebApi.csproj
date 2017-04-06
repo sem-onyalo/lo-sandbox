@@ -114,6 +114,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\GetTextResponse.cs" />
+    <Compile Include="Models\PostTextResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +130,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LoyaltyOne.Data\LoyaltyOne.Data.csproj">
+      <Project>{46f6bfc7-67b0-476f-bd3b-e3a7776a100c}</Project>
+      <Name>LoyaltyOne.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LoyaltyOne.Services\LoyaltyOne.Services.csproj">
       <Project>{fb9081cd-eda6-4fcb-894f-87ce1c28beed}</Project>
       <Name>LoyaltyOne.Services</Name>

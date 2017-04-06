@@ -44,6 +44,12 @@
     <Compile Include="TextService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LoyaltyOne.Data\LoyaltyOne.Data.csproj">
+      <Project>{46f6bfc7-67b0-476f-bd3b-e3a7776a100c}</Project>
+      <Name>LoyaltyOne.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C89689C8-BECE-4D3F-A884-F9017372BF0E}</ProjectGuid>
+    <ProjectGuid>{46F6BFC7-67B0-476F-BD3B-E3A7776A100C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LoyaltyOne.Services.Tests</RootNamespace>
-    <AssemblyName>LoyaltyOne.Services.Tests</AssemblyName>
+    <RootNamespace>LoyaltyOne.Data</RootNamespace>
+    <AssemblyName>LoyaltyOne.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,12 +34,8 @@
       <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Moq, Version=4.7.8.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <HintPath>..\packages\Moq.4.7.8\lib\net45\Moq.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+    <Reference Include="LiteDB, Version=3.1.0.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiteDB.3.1.0\lib\net35\LiteDB.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -52,24 +48,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TextServiceTest.cs" />
+    <Compile Include="ITextRepository.cs" />
+    <Compile Include="Models\TextDto.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="TextRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LoyaltyOne.Data\LoyaltyOne.Data.csproj">
-      <Project>{46f6bfc7-67b0-476f-bd3b-e3a7776a100c}</Project>
-      <Name>LoyaltyOne.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LoyaltyOne.Services\LoyaltyOne.Services.csproj">
-      <Project>{fb9081cd-eda6-4fcb-894f-87ce1c28beed}</Project>
-      <Name>LoyaltyOne.Services</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

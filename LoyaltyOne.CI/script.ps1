@@ -6,7 +6,8 @@ param(
 )
 
 $buildCmd = "msbuild"
-$buildCmdProperties = ("/property:DeployOnBuild={0};PublishProfile={1};VisualStudioVersion={2}" -f $deployOnBuild, $deployProfile, $vsVersion)
+$buildCmdTargets = "/t:Rebuild"
+$buildCmdProperties = ("/property:BuildProjectReferences=true;DeployOnBuild={0};PublishProfile={1};VisualStudioVersion={2}" -f $deployOnBuild, $deployProfile, $vsVersion)
 
 $config = (get-content -Raw "$PSScriptRoot\config.json") | ConvertFrom-Json
 
@@ -14,5 +15,5 @@ foreach($component in $config.components)
 {
 	$buildSourcePath = ("{0}\{1}" -f  $workspacePath, $component.projectPath) 
 
-	& $buildCmd $buildSourcePath $buildCmdProperties
+	& $buildCmd $buildSourcePath $buildCmdTargets $buildCmdProperties
 }

@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using LoyaltyOne.Data;
+using Moq;
+using NUnit.Framework;
 
 namespace LoyaltyOne.Services.Tests
 {
@@ -6,11 +8,12 @@ namespace LoyaltyOne.Services.Tests
     public class TextServiceTest
     {
         public ITextService _textService;
+        public Mock<ITextRepository> _textRepository;
 
         [SetUp]
         public void TestSetUp()
         {
-            _textService = new TextService();
+            _textService = new TextService(_textRepository.Object);
         }
 
         [Test]
