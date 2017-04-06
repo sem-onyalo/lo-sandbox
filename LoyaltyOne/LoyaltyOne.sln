@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoyaltyOne.Services.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoyaltyOne.WebApi", "LoyaltyOne.WebApi\LoyaltyOne.WebApi.csproj", "{ED46DFB7-8D09-4F3F-BE05-208B06179288}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoyaltyOne.Web.Tests", "LoyaltyOne.Web.Tests\LoyaltyOne.Web.Tests.csproj", "{0CB1B31A-E457-484A-87FB-E64956F7520D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{ED46DFB7-8D09-4F3F-BE05-208B06179288}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED46DFB7-8D09-4F3F-BE05-208B06179288}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED46DFB7-8D09-4F3F-BE05-208B06179288}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CB1B31A-E457-484A-87FB-E64956F7520D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CB1B31A-E457-484A-87FB-E64956F7520D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CB1B31A-E457-484A-87FB-E64956F7520D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CB1B31A-E457-484A-87FB-E64956F7520D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

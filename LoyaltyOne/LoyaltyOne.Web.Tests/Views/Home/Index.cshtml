@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.0.css">
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="https://code.jquery.com/qunit/qunit-2.3.0.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/ajax.js"></script>
+    <script type="text/javascript" src="~/Scripts/home.js"></script>
+
+    <script>
+        QUnit.test("Get text request test", function (assert) {
+            var done = assert.async();
+            getTextRequest({ apiBaseUrl: 'http://localhost:81/api/', value: 'test_text' }, function (actual) {
+                assert.equal(actual, "test_text", "Expected value is 'test_text'");
+                done();
+            });
+        });
+
+        QUnit.test("Get text request test with string empty", function (assert) {
+            var done = assert.async();
+            getTextRequest({ apiBaseUrl: 'http://localhost:81/api/', value: '' }, function (actual) {
+                assert.equal(actual, "", "Expected value is ''");
+                done();
+            });
+        });
+
+        QUnit.test("Get text request test with string undefined", function (assert) {
+            var done = assert.async();
+            getTextRequest({ apiBaseUrl: 'http://localhost:81/api/', value: undefined }, function (actual) {
+                assert.equal(actual, "", "Expected value is ''");
+                done();
+            });
+        });
+    </script>
+</body>
+</html>
