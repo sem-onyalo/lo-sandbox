@@ -114,6 +114,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\GetTextResponse.cs" />
+    <Compile Include="Models\GetTextsResponse.cs" />
+    <Compile Include="Models\PostTextRequest.cs" />
     <Compile Include="Models\PostTextResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

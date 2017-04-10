@@ -21,14 +21,22 @@ namespace LoyaltyOne.Services
         {
             return text != null ? text : string.Empty;
         }
-        
-        public string SaveText(string text)
-        {
-            TextDto textDto = new TextDto();
-            textDto.Value = text;
-            textDto.CreatedDateTimeUtc = DateTime.UtcNow;
 
-            _textRepository.InsertText(textDto);
+        public IList<string> GetTexts(string name)
+        {
+            List<string> texts = _textRepository
+                .SelectTextsByName(name)
+                .Select(x => x.Value)
+                .ToList();
+
+            return texts;
+        }
+        
+        public TextDto SaveText(TextDto text)
+        {
+            text.CreatedDateTimeUtc = DateTime.UtcNow;
+
+            _textRepository.InsertText(text);
 
             return text;
         }

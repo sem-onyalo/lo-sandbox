@@ -6,13 +6,13 @@ namespace LoyaltyOne.Data
 {
     public class TextRepository : Repository, ITextRepository
     {
-        public IEnumerable<TextDto> SelectTexts()
+        public IEnumerable<TextDto> SelectTextsByName(string name)
         {
             using (LiteDatabase db = new LiteDatabase(base.ConnectionString))
             {
                 var texts = db.GetCollection<TextDto>("Text");
 
-                return texts.FindAll();
+                return texts.Find(x => x.Name == name);
             }
         }
 
@@ -23,6 +23,8 @@ namespace LoyaltyOne.Data
                 var texts = db.GetCollection<TextDto>("Text");
 
                 texts.Insert(text);
+
+                texts.EnsureIndex(x => x.Name);
             }
         }
     }

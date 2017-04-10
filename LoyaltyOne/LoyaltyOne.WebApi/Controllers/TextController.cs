@@ -1,7 +1,7 @@
-﻿using LoyaltyOne.WebApi.Models;
+﻿using LoyaltyOne.Data.Models;
 using LoyaltyOne.Services;
+using LoyaltyOne.WebApi.Models;
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -42,15 +42,43 @@ namespace LoyaltyOne.WebApi.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
-        [Route("v1/text/{text}")]
+        [Route("v1/texts/{name}")]
+        [HttpGet]
+        public virtual HttpResponseMessage GetTexts(string name)
+        {
+            GetTextsResponse response = new GetTextsResponse();
+
+            try
+            {
+                response.Name = name;
+                response.Texts = _textService.GetTexts(name);
+            }
+            catch (Exception ex)
+            {
+                response.Name = name;
+                response.Error = string.Format("Internal server error: {0}", ex.Message);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+        [Route("v1/text")]
         [HttpPost]
-        public virtual HttpResponseMessage PostText(string text)
+        public virtual HttpResponseMessage PostText(PostTextRequest request)
         {
             PostTextResponse response = new PostTextResponse();
 
             try
             {
-                response.Text = _textService.SaveText(text);
+                if (request == null) throw new ArgumentException("Request content is invalid");
+
+                TextDto textDto = _textService.SaveText(new TextDto
+                {
+                    Name = request.Name,
+                    Value = request.Text
+                });
+
+                response.Text = textDto.Value;
             }
             catch (Exception ex)
             {

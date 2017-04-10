@@ -1,6 +1,6 @@
 ﻿var httpRequest;
 
-function ajaxRequest(url, callback) {
+function ajaxRequest(url, method, content, callback) {
     httpRequest = new XMLHttpRequest();
 
     if (!httpRequest) {
@@ -8,8 +8,9 @@ function ajaxRequest(url, callback) {
         return false;
     }
     httpRequest.onreadystatechange = function () { ajaxResponse(callback); };
-    httpRequest.open('GET', url);
-    httpRequest.send();
+    httpRequest.open(method, url);
+    httpRequest.setRequestHeader("Content-Type", "application/json");
+    httpRequest.send(content);
 }
 
 function ajaxResponse(callbackFunction) {

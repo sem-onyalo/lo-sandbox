@@ -5,7 +5,7 @@ namespace LoyaltyOne.Data
 {
     public interface ITextRepository
     {
-        IEnumerable<TextDto> SelectTexts();
+        IEnumerable<TextDto> SelectTextsByName(string name);
 
         void InsertText(TextDto text);
     }
