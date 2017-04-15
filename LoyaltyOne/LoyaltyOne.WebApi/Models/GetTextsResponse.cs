@@ -6,7 +6,7 @@ namespace LoyaltyOne.WebApi.Models
     {
         public string Name { get; set; }
 
-        public IList<string> Texts { get; set; }
+        public IList<TextResponse> Texts { get; set; }
 
         public string Error { get; set; }
     }

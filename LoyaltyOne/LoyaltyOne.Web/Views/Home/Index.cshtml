@@ -5,18 +5,21 @@
 }
 
 <div>
-    <input type="text" name="inputName" id="inputName" placeholder="name" />    &nbsp;
+    <input type="text" name="inputName" id="inputName" placeholder="name" />
+    &nbsp;
+    <button onclick="return ButtonGetSubs_Click()">Get Submissions</button>
+    &nbsp;
     <span id="inputNameValidationMsg" style="color:red;font-weight:bold;display:none;"></span>
     <br />
     <input type="text" name="inputText" id="inputText" placeholder="text" />
     &nbsp;
     <span id="inputTextValidationMsg" style="color:red;font-weight:bold;display:none;"></span>
     <br />
-    <button onclick="return ButtonDone_Click()">Done</button>
+    <button onclick="return ButtonDone_Click()">Submit</button>
     <br />
     <img id="imgLoadingText" alt="loading..." src="~/Images/loading.gif" style="display:none;" /><span id="textResponse"></span>
     <br /><br />
-    <span style="font-weight:bold;">Your Submissions</span>
+    <span style="font-weight:bold;">Submissions</span>
     <div id="userSubmissions">
         <img id="imgLoadingSubs" alt="loading..." src="~/Images/loading.gif" style="display:none;" />
     </div>

@@ -1,6 +1,7 @@
 ﻿using LiteDB;
 using LoyaltyOne.Data.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LoyaltyOne.Data
 {
@@ -13,6 +14,18 @@ namespace LoyaltyOne.Data
                 var texts = db.GetCollection<TextDto>("Text");
 
                 return texts.Find(x => x.Name == name);
+            }
+        }
+
+        public IEnumerable<TextDto> SelectTextsByParentIds(List<int> parentIds)
+        {
+            using (LiteDatabase db = new LiteDatabase(base.ConnectionString))
+            {
+                var texts = db.GetCollection<TextDto>("Text");
+
+                return texts
+                    .FindAll()
+                    .Where(x => parentIds.Contains(x.ParentId));
             }
         }
 

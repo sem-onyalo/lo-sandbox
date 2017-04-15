@@ -2,6 +2,7 @@
 using LoyaltyOne.Services;
 using LoyaltyOne.WebApi.Models;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -50,8 +51,18 @@ namespace LoyaltyOne.WebApi.Controllers
 
             try
             {
+                IList<TextDto> textDtos = _textService.GetTexts(name);
+
                 response.Name = name;
-                response.Texts = _textService.GetTexts(name);
+                response.Texts = new List<TextResponse>();
+
+                foreach (TextDto textDto in textDtos)
+                    response.Texts.Add(new TextResponse
+                    {
+                        Id = textDto.Id.ToString(),
+                        ParentId = textDto.ParentId.ToString(),
+                        Text = textDto.Value
+                    });
             }
             catch (Exception ex)
             {
@@ -75,10 +86,13 @@ namespace LoyaltyOne.WebApi.Controllers
                 TextDto textDto = _textService.SaveText(new TextDto
                 {
                     Name = request.Name,
-                    Value = request.Text
+                    Value = request.Text,
+                    ParentId = Convert.ToInt32(request.ParentId)
                 });
 
                 response.Text = textDto.Value;
+                response.Id = textDto.Id.ToString();
+                response.ParentId = textDto.ParentId.ToString();
             }
             catch (Exception ex)
             {

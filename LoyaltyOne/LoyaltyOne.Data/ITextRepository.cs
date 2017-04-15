@@ -7,6 +7,8 @@ namespace LoyaltyOne.Data
     {
         IEnumerable<TextDto> SelectTextsByName(string name);
 
+        IEnumerable<TextDto> SelectTextsByParentIds(List<int> parentIds);
+
         void InsertText(TextDto text);
     }
 }

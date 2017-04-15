@@ -22,12 +22,31 @@ namespace LoyaltyOne.Services
             return text != null ? text : string.Empty;
         }
 
-        public IList<string> GetTexts(string name)
+        public IList<TextDto> GetTexts(string name)
         {
-            List<string> texts = _textRepository
+            List<TextDto> textsByName = _textRepository
                 .SelectTextsByName(name)
-                .Select(x => x.Value)
                 .ToList();
+
+            List<int> parentIds = textsByName.Select(x => x.Id).Distinct().ToList();
+
+            List<TextDto> textsByParentIds = _textRepository
+                .SelectTextsByParentIds(parentIds)
+                .ToList();
+
+            List<TextDto> texts = new List<TextDto>();
+            foreach (TextDto text in textsByName)
+            {
+                texts.Add(text);
+
+                if (textsByParentIds.Select(x => x.ParentId).Contains(text.Id))
+                {
+                    foreach (TextDto childText in textsByParentIds.Where(x => x.ParentId == text.Id))
+                    {
+                        texts.Add(childText);
+                    }
+                }
+            }
 
             return texts;
         }

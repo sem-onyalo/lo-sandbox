@@ -7,7 +7,7 @@ namespace LoyaltyOne.Services
     {
         string PingText(string text);
 
-        IList<string> GetTexts(string name);
+        IList<TextDto> GetTexts(string name);
 
         TextDto SaveText(TextDto text);
     }
