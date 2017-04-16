@@ -1,4 +1,4 @@
-﻿var apiBaseUrl = "http://localhost:81/api/";
+﻿var apiBaseUrl = "https://localhost:444/api/";
 
 function getTextRequest(args, responseCallback) {
     var apiBaseUrl = args.apiBaseUrl;
