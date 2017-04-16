@@ -1,4 +1,5 @@
 ﻿using LoyaltyOne.Data.Models;
+using LoyaltyOne.Services.Models;
 using System.Collections.Generic;
 
 namespace LoyaltyOne.Services
@@ -7,8 +8,8 @@ namespace LoyaltyOne.Services
     {
         string PingText(string text);
 
-        IList<TextDto> GetTexts(string name);
+        GetTextsResponse GetTexts(string name);
 
-        TextDto SaveText(TextDto text);
+        SaveTextResponse SaveText(SaveTextRequest request);
     }
 }

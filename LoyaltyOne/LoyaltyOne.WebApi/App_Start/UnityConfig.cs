@@ -12,7 +12,11 @@ namespace LoyaltyOne.WebApi
         {
 			var container = new UnityContainer();
 
+            container.RegisterType<IApiService, ApiService>();
             container.RegisterType<ITextService, TextService>();
+            container.RegisterType<ILocationService, LocationService>();
+
+            container.RegisterType<ICityRepository, CityRepository>();
             container.RegisterType<ITextRepository, TextRepository>();
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);

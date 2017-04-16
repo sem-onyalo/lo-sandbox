@@ -7,6 +7,8 @@ namespace LoyaltyOne.WebApi.Models
 
         public string Text { get; set; }
 
+        public string City { get; set; }
+
         public string ParentId { get; set; }
     }
 }

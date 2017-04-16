@@ -48,7 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CityRepository.cs" />
+    <Compile Include="ICityRepository.cs" />
     <Compile Include="ITextRepository.cs" />
+    <Compile Include="Models\CityDto.cs" />
     <Compile Include="Models\TextDto.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="TextRepository.cs" />

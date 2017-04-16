@@ -2,7 +2,7 @@
 
 namespace LoyaltyOne.WebApi.Models
 {
-    public class GetTextsResponse
+    public class GetTextsByNameResponse
     {
         public string Name { get; set; }
 

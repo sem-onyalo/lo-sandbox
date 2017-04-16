@@ -12,6 +12,8 @@ namespace LoyaltyOne.Data.Models
 
         public string Value { get; set; }
 
+        public string CityName { get; set; }
+
         public DateTime CreatedDateTimeUtc { get; set; }
     }
 }
