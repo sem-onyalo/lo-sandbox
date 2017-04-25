@@ -1,5 +1,9 @@
 {
-	"components": [
+  "components": [
+    {
+      "projectType": "test",
+      "projectPath": "LoyaltyOne\\LoyaltyOne.Services.Tests\\LoyaltyOne.Services.Tests.csproj"
+    },
     {
       "projectType": "site",
       "projectPath": "LoyaltyOne\\LoyaltyOne.Web\\LoyaltyOne.Web.csproj",
@@ -9,5 +13,5 @@
       "projectType": "api",
       "projectPath": "LoyaltyOne\\LoyaltyOne.WebApi\\LoyaltyOne.WebApi.csproj"
     }
-	]
+  ]
 }

@@ -8,22 +8,34 @@ param(
 Import-Module WebAdministration
 
 $buildCmd = "msbuild"
-$buildCmdTargets = "/t:Rebuild"
-$buildCmdProperties = ("/property:BuildProjectReferences=true;DeployOnBuild={0};PublishProfile={1};VisualStudioVersion={2}" -f $deployOnBuild, $deployProfile, $vsVersion)
 
 $config = (get-content -Raw "$PSScriptRoot\config.json") | ConvertFrom-Json
 
 foreach($component in $config.components)
 {
-	if ($component.projectType -eq 'site')
+	if ($component.projectType -eq 'test')
+	{
+		$buildSourcePath = ("{0}\{1}" -f  $workspacePath, $component.projectPath) 
+
+		& $buildCmd $buildSourcePath "/t:RunTests"
+
+		if ($LASTEXITCODE -ne 0)
+		{
+			Write-Host "Aborting build, test(s) failed for" $component.projectPath
+			break
+		}
+	}
+	elseif ($component.projectType -eq 'site')
 	{
 		Write-Host "Restarting application pool for " $component.siteName
 		$site = $component.siteName
 		$appPool = (Get-Item "IIS:\Sites\$site"| Select-Object applicationPool).applicationPool
 		Restart-WebAppPool $appPool
 	}
+	else
+	{
+		$buildSourcePath = ("{0}\{1}" -f  $workspacePath, $component.projectPath) 
 
-	$buildSourcePath = ("{0}\{1}" -f  $workspacePath, $component.projectPath) 
-
-	& $buildCmd $buildSourcePath $buildCmdTargets $buildCmdProperties
+		& $buildCmd $buildSourcePath "/t:Rebuild" ("/property:BuildProjectReferences=true;DeployOnBuild={0};PublishProfile={1};VisualStudioVersion={2}" -f $deployOnBuild, $deployProfile, $vsVersion)
+	}
 }
