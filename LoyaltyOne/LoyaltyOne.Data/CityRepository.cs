@@ -7,6 +7,10 @@ namespace LoyaltyOne.Data
 {
     public class CityRepository : Repository, ICityRepository
     {
+        public CityRepository() : base() { }
+
+        public CityRepository(string connectionString) : base(connectionString) { }
+
         public CityDto SelectCityByName(string name)
         {
             using (LiteDatabase db = new LiteDatabase(base.ConnectionString))

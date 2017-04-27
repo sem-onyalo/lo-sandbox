@@ -17,7 +17,7 @@ foreach($component in $config.components)
 	{
 		$buildSourcePath = ("{0}\{1}" -f  $workspacePath, $component.projectPath) 
 
-		& $buildCmd $buildSourcePath "/t:RunTests"
+		& $buildCmd $buildSourcePath "/t:RunTests" ("/property:BuildProjectReferences=true;VisualStudioVersion={0}" -f $vsVersion)
 
 		if ($LASTEXITCODE -ne 0)
 		{

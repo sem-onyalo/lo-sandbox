@@ -7,6 +7,10 @@ namespace LoyaltyOne.Data
 {
     public class TextRepository : Repository, ITextRepository
     {
+        public TextRepository() : base() { }
+
+        public TextRepository(string connectionString) : base(connectionString) { }
+
         public IEnumerable<TextDto> SelectTextsByName(string name)
         {
             using (LiteDatabase db = new LiteDatabase(base.ConnectionString))

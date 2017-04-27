@@ -5,6 +5,10 @@
       "projectPath": "LoyaltyOne\\LoyaltyOne.Services.Tests\\LoyaltyOne.Services.Tests.csproj"
     },
     {
+      "projectType": "test",
+      "projectPath": "LoyaltyOne\\LoyaltyOne.WebApi.Tests\\LoyaltyOne.WebApi.Tests.csproj"
+    },
+    {
       "projectType": "site",
       "projectPath": "LoyaltyOne\\LoyaltyOne.Web\\LoyaltyOne.Web.csproj",
       "siteName": "loyaltyone"

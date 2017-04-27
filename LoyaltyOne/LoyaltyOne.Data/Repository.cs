@@ -5,7 +5,7 @@ namespace LoyaltyOne.Data
 {
     public abstract class Repository
     {
-        protected string ConnectionString { get; set; }
+        protected string ConnectionString { get; private set; }
 
         public Repository()
         {
