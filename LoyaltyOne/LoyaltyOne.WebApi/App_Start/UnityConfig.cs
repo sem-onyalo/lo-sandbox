@@ -1,6 +1,8 @@
 using LoyaltyOne.Data;
 using LoyaltyOne.Services;
 using Microsoft.Practices.Unity;
+using System;
+using System.Configuration;
 using System.Web.Http;
 using Unity.WebApi;
 
@@ -16,8 +18,8 @@ namespace LoyaltyOne.WebApi
             container.RegisterType<ITextService, TextService>();
             container.RegisterType<ILocationService, LocationService>();
 
-            container.RegisterType<ICityRepository, CityRepository>();
-            container.RegisterType<ITextRepository, TextRepository>();
+            container.RegisterType<ICityRepository, CityRepository>(new InjectionConstructor(new Uri(ConfigurationManager.AppSettings["DbConnectionString"]).LocalPath));
+            container.RegisterType<ITextRepository, TextRepository>(new InjectionConstructor(new Uri(ConfigurationManager.AppSettings["DbConnectionString"]).LocalPath));
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }
